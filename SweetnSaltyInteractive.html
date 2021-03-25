@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--meta http-equiv="X-UA-Compatible" content="ie=edge"-->
+    <title>Sweet'nSalty Game</title>
+    <!--script src="SweetSalty.js"></script-->
+    <!--link rel="stylesheet" type="text/css" href="style.css"-->
+    <style>
+.responsive {
+	max-width: 100%;
+	height: auto;
+  }
+body,html, div {
+        width: 100%;
+      }
+img{
+	padding: 5px;
+}
+
+#results {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+	background-color: gainsboro; 
+  }
+  .results {
+            width: 100%;
+            text-align: center;
+  }
+#results td, #results th {
+	border: 1px solid #ddd;
+	padding: 8px;
+  }
+  
+#results tr:nth-child(even){background-color: #f2f2f2;}
+  
+#results tr:hover {background-color: #ddd;}
+  
+#results th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #f7941d;
+	color: white;
+  }
+
+.rev-style{
+	max-width: 700px;
+	padding: 20px 12px 10px 20px;
+	font: 18px Arial, Helvetica, sans-serif;
+}
+.rev-style-heading{
+	font-weight: bold;
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 20px;
+	padding-bottom: 3px;
+    
+}
+.rev-style-headingB{
+	font-style: italic;
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 20px;
+	font-size: 18px;
+	padding-bottom: 3px;
+    color: #EA7B00;
+    position:relative;
+    align-self: center;
+    
+}
+
+.rev-style label{
+	display: block;
+	margin: 0px 0px 15px 0px;
+    color: #0C0;
+    
+}
+.rev-style label > span{
+	width: 200px;
+	font-weight: bold;
+	float: left;
+	padding-top: 0px;
+	padding-right: 5px;
+}
+.rev-style span.required{
+	color:red;
+}
+.rev-style .tel-number-field{
+	width: 40px;
+	text-align: center;
+}
+.rev-style input.input-field, .rev-style .select-field{
+	width: 48%;	
+}
+.rev-style input.input-field, 
+.rev-style .tel-number-field, 
+.rev-style .textarea-field, 
+ .rev-style .select-field{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #C2C2C2;
+	box-shadow: 1px 1px 4px #EBEBEB;
+	-moz-box-shadow: 1px 1px 4px #EBEBEB;
+	-webkit-box-shadow: 1px 1px 4px #EBEBEB;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 7px;
+	outline: none;
+}
+.rev-style .input-field:focus, 
+.rev-style .tel-number-field:focus, 
+.rev-style .textarea-field:focus,  
+.rev-style .select-field:focus{
+	border: 1px solid #0C0;
+}
+.rev-style .textarea-field{
+	height:100px;
+	width: 55%;
+}
+.rev-style input[type=submit],
+.rev-style input[type=button]{
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: #a1c9a1;
+	color: rgb(57, 28, 224);
+	box-shadow: 1px 1px 4px #DADADA;
+	-moz-box-shadow: 1px 1px 4px #DADADA;
+	-webkit-box-shadow: 1px 1px 4px #DADADA;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+p,div,label {
+        transition: 0.5s;
+      }
+
+p:hover,label:hover {
+        background-color: rgb(215, 215, 228);
+        color: rgb(226, 64, 64);
+        padding: 8pt;
+      }
+p {
+        color: rgb(9, 12, 189);
+        padding: 8pt;
+      }
+p:hover{
+        background-color: rgb(199, 207, 190);
+        color: rgb(233, 8, 8);
+        padding: 8pt;
+      }
+button,.submit-btn {
+        transition: 0.8s;
+      }
+
+button:hover, .submit-btn:hover {
+        color: darkolivegreen;
+        background-color: greenyellow;
+        border: none;
+        padding: 8pt;
+      }
+
+input:focus {
+        background-color: lime;
+      }
+.rev-style input[type=submit]:hover,
+.rev-style input[type=button]:hover{
+	background: #EA7B00;
+	color: #fff;
+}
+
+
+
+</style>
+</head>
+
+<body>
+    <div class="rev-style-headingB">
+        <h1>Sweet & Salty Game</h1>
+    </div>
+    <p>
+    To play this game, You would required to enter 3 numbers, the starting, the end number and numbers per line. 
+    The program runs through the range between the start and the end numbers. 
+    Whenever the program encounters a number divisible by 3, it prints sweet,
+    and when it encounters a number divisible by 5 it prints salty, and if it's divisible by both 3 and 5, it
+    prints sweet'nSalty. Otherwise it prints the number. However there are rules to enter number which player needs to follows. 
+    The range between both numbers must be no less than 200, and no greater than 10000. And the words per line should be at least 1/100th of
+    the range.
+    </p>
+    <label><span></span></label><br/>
+    <label><span></span></label><br/>
+
+    <form id="MainDiv" class="rev-style">
+            <label><span>Enter start number:</span><span><input id="Sweetvalue" type="number" name="sweet" value="", onfocusout="CheckIt()"></span></label>
+            <label><span></span></label><br/>
+            <label><span>Enter stop number:</span><span><input id="Saltyvalue" type="number" name="salty" value="", onfocusout="IsApartOk()"></span></label>
+            <label><span></span></label><br/>
+            <label><span>Enter Number per line:</span><span><input id="PerLinevalue" type="number" name="PerLine" value="", onfocusout="validateNPL() "></span></label>
+            <label><span></span></label><br/>
+            <label><span></span><input onclick="SweetIt()" type="submit" value="Sweet It" /></label>
+            <label><span></span></label><br/>
+    </form>
+    <div id="ChildDiv" class="rev-style"> 
+        
+    </div>
+
+<script>
+function GetSweet(val1,val2,val3)
+{
+        let returnValue = "<p> ";
+            
+        for(let i=val1;i<=val2;i++)
+	    {
+            
+            if (i % 3 == 0 && i % 5 == 0)  
+            {  
+                        // Checking if number is multiple of both 3 and 5 and print "Sweet’nSalty"  
+                        returnValue=returnValue +  " <b class=keywords> " + "Sweet’nSalty" + "</b>" ;
+            }  
+                    else if (i % 3 == 0)  
+            {  
+                        // Checking if number is multiple of only 3 and print "Sweet" 
+                        returnValue=returnValue +  " <b class=keywords> " + "Sweet" + "</b>";
+            }  
+                    else if (i % 5 == 0)  
+            {  
+                        // Checking if number is multiple of only 5 and print "Salty"
+                        //iSalty=iSalty+1;
+                        returnValue=returnValue +  " <b class=keywords> " + "Salty" + "</b>";
+            }  
+                    else  
+            {  
+                        // else print the number itself
+                        returnValue=returnValue +  " " + i.toLocaleString('en-US');
+            } 
+            
+            document.write("<table>");
+                if(i%val3==0)
+                    {
+                            document.writeln('<tr>');
+                            document.writeln("<td>"+returnValue+"</td>");
+                            document.writeln('</tr>');
+                            returnValue="";
+                            document.fgColor="blue";
+                            document.bgColor="antiquewhite";
+                            
+                    }
+                    document.write("</table>");
+       	}
+        //console.log(returnValue);
+       document.writeln('<div class="rev-style">');
+       document.writeln('<label class="rev-style"><span></span><input id="l1" onclick='+" window.location.reload() "+' type="submit" value="Replay Game" /></label>');
+       document.writeln('</div>');
+       
+       
+}
+
+function SweetIt()
+        {
+            
+            if(IsApartOk()==true)
+            {
+            let output = "";
+            let val1 = document.getElementById('Sweetvalue').value;
+            let val2 = document.getElementById('Saltyvalue').value;
+            let val3 = document.getElementById('PerLinevalue').value;
+            output = GetSweet(val1,val2,val3);
+
+            }
+        }
+
+function CheckIt()
+        {
+            let val1 = document.getElementById('Sweetvalue').value;
+            if (IsNumber(val1)==true)
+            {
+                if (val1 <= 0) 
+                {
+                    alert("Please enter value greater than zero.");
+                    
+                }
+            }
+            
+        }
+
+function IsNumber(x)
+        {
+            if(parseInt(x)>0)
+            {
+                //alert("I am good" + x)
+                return true;
+            }
+            else
+            {
+                var str = new String("Please enter the Number and Value greater than zero!");
+                alert(str);
+              
+            }
+        }
+
+function IsApartOk()
+    {
+        let output = "";
+        let val1 = document.getElementById('Sweetvalue').value;
+        let val2 = document.getElementById('Saltyvalue').value;
+        if(Math.abs(val1-val2)>=200 && Math.abs(val1-val2)<=10000)
+        {
+        return true;
+        }
+        else
+        {
+            var str = new String("Start and Stop Numbers should be Minimum 200 aprt and should not be more than 10,000 apart from each other! Please change start/stop number value(s). ");
+
+            alert(str);
+           
+            return false;
+        }
+    }
+
+function validateNPL() 
+        {
+            let val2 = document.getElementById('Saltyvalue').value;
+            let val3 = document.getElementById('PerLinevalue').value;
+            checkVal=0.01*val2
+            //alert(checkVal);
+                if (IsNumber(val3)==true)
+            {
+                if (val3 < 50 ) 
+                {
+                    alert("There can be no fewer than 50 numbers on a single line!");
+                    
+                    
+                }
+                else if (val3<checkVal )
+                {
+                    alert("Please enter Value greater than or equal to 50 or 1/100 of "+ val2  );
+                }
+            }
+            
+        }
+</Script>
+</body>
+</html>
